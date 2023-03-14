@@ -10,12 +10,15 @@ public class Pizza {
         this.isVeg = isVeg;
         // your code goes here
 
-        if(isVeg)
-            this.price=300;
-        else
-            this.price=400;
+        if(isVeg) {
+            this.price = 300;
+            System.out.println("Base Price Of The Pizza: 300");
+        }
+        else {
+            this.price = 400;
+            System.out.println("Base Price Of The Pizza: 400");
+        }
 
-        System.out.println("Base Price Of The Pizza: "+this.price);
     }
 
     public int getPrice(){

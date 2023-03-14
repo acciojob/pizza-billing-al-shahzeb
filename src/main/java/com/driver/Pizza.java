@@ -30,11 +30,14 @@ public class Pizza {
 
     public void addExtraToppings(){
         // your code goes here
-        System.out.println("Extra Toppings Added: 70");
-        if(isVeg)
-            this.price+=70;
-        else
-            this.price+=120;
+        if(isVeg) {
+            this.price += 70;
+            System.out.println("Extra Toppings Added: 70");
+        }
+        else {
+            System.out.println("Extra Toppings Added: 120");
+            this.price += 120;
+        }
     }
 
     public void addTakeaway(){

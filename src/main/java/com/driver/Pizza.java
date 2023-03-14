@@ -9,17 +9,18 @@ public class Pizza {
     private Boolean extracheeseadded=false;
     private Boolean extratoppingadded=false;
 
+    private Boolean takeaway=false;
+
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
         bill="";
         if(isVeg) {
             this.price = 300;
-            bill+="Base Price Of The Pizza: 300\n";
+
         }
         else {
             this.price = 400;
-            bill+="Base Price Of The Pizza: 400\n";
         }
 
     }
@@ -30,41 +31,45 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        if(!extracheeseadded) {
-            this.bill += "Extra Cheese Added: 80\n";
-            extracheeseadded=true;
-        }
+        extracheeseadded=true;
         this.price+=80;
     }
 
     public void addExtraToppings(){
         // your code goes here
+        extratoppingadded=true;
         if(isVeg) {
             this.price += 70;
-            if(!extratoppingadded) {
-                bill += "Extra Toppings Added: 70\n";
-                extratoppingadded = true;
-            }
         }
         else {
-            if(!extratoppingadded) {
-                bill += "Extra Toppings Added: 120\n";
-                extratoppingadded = true;
-            }
             this.price += 120;
         }
     }
 
     public void addTakeaway(){
         // your code goes here
-        bill+="Paperbag Added: 20\n";
-        //System.out.println();
+        takeaway=true;
         price+=20;
     }
 
     public String getBill(){
         // your code goes here
-        bill+="Total Price: "+this.price+"\n";
+        if(isVeg)   bill+="Base Price Of The Pizza: 300\n";
+        else    bill+="Base Price Of The Pizza: 400\n";
+
+        if(extracheeseadded)    bill+="Extra Cheese Added: 80\n";
+
+        if(extratoppingadded){
+            if(isVeg)
+                bill+="Extra Toppings Added: 70\n";
+            else
+                bill+="Extra Toppings Added: 120\n";
+        }
+
+        if(takeaway)
+            bill+="Paperbag Added: 20\n";
+
+        bill+="Total Prise: "+this.price;
         return this.bill;
     }
 }

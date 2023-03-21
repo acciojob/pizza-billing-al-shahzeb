@@ -11,7 +11,7 @@ public class Pizza {
 
     private Boolean takeaway=false;
 
-    private boolean isdelux=false;
+    private int basePrice;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -19,18 +19,16 @@ public class Pizza {
         bill="";
         if(isVeg) {
             this.price = 300;
-
+            basePrice = 300;
         }
         else {
             this.price = 400;
+            basePrice = price;
         }
 
     }
 
-    public void addPrice(int price) {
-        isdelux=true;
-        this.price += price;
-    }
+
 
     public int getPrice(){
         return this.price;
@@ -38,37 +36,37 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        extracheeseadded=true;
-        this.price+=80;
+        if(!extracheeseadded) {
+            extracheeseadded = true;
+            this.price += 80;
+        }
     }
 
     public void addExtraToppings(){
         // your code goes here
-        extratoppingadded=true;
-        if(isVeg) {
-            this.price += 70;
-        }
-        else {
-            this.price += 120;
+        if(!extratoppingadded) {
+            extratoppingadded = true;
+            if (isVeg) {
+                this.price += 70;
+            } else {
+                this.price += 120;
+            }
         }
     }
 
     public void addTakeaway(){
         // your code goes here
-        takeaway=true;
-        price+=20;
+        if(!takeaway) {
+            takeaway = true;
+            price += 20;
+        }
     }
 
     public String getBill(){
         // your code goes here
-        if(isdelux){
-            if(isVeg)   bill+="Base Price Of The Pizza: 450\n";
-            else    bill+="Base Price Of The Pizza: 600\n";
-        }
-        else {
-            if (isVeg) bill += "Base Price Of The Pizza: 300\n";
-            else bill += "Base Price Of The Pizza: 400\n";
-        }
+
+        if(isVeg)
+            bill+="Base Price Of The Pizza: "+this.basePrice+"\n";
 
         if(extracheeseadded)    bill+="Extra Cheese Added: 80\n";
 
@@ -82,7 +80,7 @@ public class Pizza {
         if(takeaway)
             bill+="Paperbag Added: 20\n";
 
-        bill+="Total Prise: "+this.price;
+        bill+="Total Price: "+this.price;
         return this.bill;
     }
 }

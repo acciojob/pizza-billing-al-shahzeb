@@ -68,8 +68,8 @@ public class Pizza {
         // your code goes here
         if(!billgen) {
             billgen=true;
-            if (isVeg)
-                bill += "Base Price Of The Pizza: " + this.basePrice + "\n";
+
+            bill += "Base Price Of The Pizza: " + this.basePrice + "\n";
 
             if (extracheeseadded) bill += "Extra Cheese Added: 80\n";
 
